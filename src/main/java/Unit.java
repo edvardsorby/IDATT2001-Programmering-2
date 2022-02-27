@@ -1,18 +1,21 @@
 /**
- * The abstract class Unit
+ * The abstract superclass Unit.
+ * All specialized unit classes inherit from this superclass.
  */
 public abstract class Unit {
-    private String name;
+    private final String name;
     private int health;
-    private int attack;
-    private int armor;
+    private final int attack;
+    private final int armor;
+    private int timesAttacked = 0;
+    private int timesDefended = 0;
 
     /**
      * Constructor for the Unit class
-     * @param name a short, descriptive name. For example "Swordsman" or "Archer".
-     * @param health the unit's health. Must be larger than or equal to 0.
-     * @param attack an attack value representing the unit's weapon.
-     * @param armor a defense value that protects during an attack.
+     * @param name a short, descriptive name. For example "Swordsman" or "Archer"
+     * @param health the unit's health. Must be larger than or equal to 0
+     * @param attack an attack value representing the unit's weapon
+     * @param armor a defense value that protects during an attack
      */
     public Unit(String name, int health, int attack, int armor) {
         this.name = name;
@@ -23,17 +26,19 @@ public abstract class Unit {
 
     /**
      * Performs an attack on an opponent.
-     * @param opponent the opponent to attack.
+     * @param opponent the opponent to attack
      */
     public void attack (Unit opponent) {
-        // Må vi bruke this her?
-        int newHealth = opponent.getHealth() - (this.getAttack() - this.getAttackBonus()) + (opponent.getArmor() + opponent.getResistBonus());
+        int newHealth = opponent.getHealth() - (attack + getAttackBonus()) + (opponent.getArmor() + opponent.getResistBonus());
         opponent.setHealth(newHealth);
+
+        this.timesAttacked++;
+        opponent.timesDefended++;
     }
 
     /**
      * Gets the unit's name.
-     * @return returns the name in a String.
+     * @return the name of the unit
      */
     public String getName() {
         return name;
@@ -41,7 +46,7 @@ public abstract class Unit {
 
     /**
      * Gets the unit's current health.
-     * @return returns the health as a number.
+     * @return the health of the unit
      */
     public int getHealth() {
         return health;
@@ -49,7 +54,7 @@ public abstract class Unit {
 
     /**
      * Gets the unit's attack value.
-     * @return returns the attack value.
+     * @return the attack value of the unit
      */
     public int getAttack() {
         return attack;
@@ -57,7 +62,7 @@ public abstract class Unit {
 
     /**
      * Gets the units armor value.
-     * @return returns the armor value.
+     * @return the armor value of the unit
      */
     public int getArmor() {
         return armor;
@@ -65,7 +70,7 @@ public abstract class Unit {
 
     /**
      * Sets the unit's health value.
-     * @param health takes in the new health value as a parameter.
+     * @param health the new health value for the unit
      */
     public void setHealth(int health) {
         this.health = health;
@@ -73,27 +78,42 @@ public abstract class Unit {
 
     /**
      * Formats the unit with a toString method.
-     * @return returns a short description of the unit and its values.
+     * @return a short description of the unit and its values
      */
     @Override
     public String toString() {
-        return "Unit{" +
-                "name='" + name + '\'' +
-                ", health=" + health +
-                ", attack=" + attack +
-                ", armor=" + armor +
-                '}';
+        return "Unit: " +
+                "Name: " + name +
+                ", health: " + health +
+                ", attack: " + attack +
+                ", armor: " + armor;
     }
 
     /**
      * Gets the unit's attack bonus.
-     * @return returns the attack bonus.
+     * @return the attack bonus of the unit
      */
     public abstract int getAttackBonus();
 
     /**
      * Gets the unit's resist bonus.
-     * @return returns the resist bonus.
+     * @return the resist bonus of the unit
      */
     public abstract int getResistBonus();
+
+    /**
+     * Gets the number of times the unit has attacked another unit.
+     * @return the number of times attacked
+     */
+    public int getTimesAttacked() {
+        return timesAttacked;
+    }
+
+    /**
+     * Gets the number of times the unit has defended an attack.
+     * @return the number of times defended
+     */
+    public int getTimesDefended() {
+        return timesDefended;
+    }
 }
