@@ -1,3 +1,5 @@
+package units;
+
 /**
  * The specialized unit class RangedUnit, which inherits from the superclass Unit.
  */

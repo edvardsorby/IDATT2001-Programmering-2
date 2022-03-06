@@ -1,3 +1,5 @@
+package units;
+
 /**
  * The specialized unit class InfantryUnit, which inherits from the superclass Unit.
  */

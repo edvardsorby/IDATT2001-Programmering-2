@@ -1,5 +1,7 @@
+package units;
+
 /**
- * The specialized unit class CommanderUnit, which inherits from the class CavalryUnit.
+ * The specialized unit class CommanderUnit, which inherits from the class units.CavalryUnit.
  */
 public class CommanderUnit extends CavalryUnit{
 

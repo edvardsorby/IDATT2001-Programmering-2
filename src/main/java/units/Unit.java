@@ -1,3 +1,5 @@
+package units;
+
 /**
  * The abstract superclass Unit.
  * All specialized unit classes inherit from this superclass.
@@ -12,12 +14,17 @@ public abstract class Unit {
 
     /**
      * Constructor for the Unit class
-     * @param name a short, descriptive name. For example "Swordsman" or "Archer"
+     * @param name a short, descriptive name of the unit. For example "Swordsman" or "Archer"
      * @param health the unit's health. Must be larger than or equal to 0
      * @param attack an attack value representing the unit's weapon
      * @param armor a defense value that protects during an attack
      */
-    public Unit(String name, int health, int attack, int armor) {
+    public Unit(String name, int health, int attack, int armor) throws IllegalArgumentException {
+        if (name.isEmpty()) throw new IllegalArgumentException("The unit must have a name.");
+        if (health <= 0) throw new IllegalArgumentException("The health value must be larger than 0.");
+        if (attack <= 0) throw new IllegalArgumentException("The attack value must be larger than 0.");
+        if (armor < 0) throw new IllegalArgumentException("The armor value can't be negative.");
+
         this.name = name;
         this.health = health;
         this.attack = attack;
@@ -82,7 +89,7 @@ public abstract class Unit {
      */
     @Override
     public String toString() {
-        return "Unit: " +
+        return "units.Unit: " +
                 "Name: " + name +
                 ", health: " + health +
                 ", attack: " + attack +

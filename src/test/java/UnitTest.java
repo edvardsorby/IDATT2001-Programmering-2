@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import units.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -24,7 +25,8 @@ public class UnitTest {
 
         testUnit1.attack(testUnit2);
 
-        //opponent.getHealth() - (attack + getAttackBonus()) + (opponent.getArmor() + opponent.getResistBonus());
+        // Formula:
+        // health[defender] - (attack + attackBonus)[attacker] + (armor + resistBonus)[defender];
         int expectedHealth = 100 - (15 + 2) + (10 + 1);
 
         assertEquals(expectedHealth, testUnit2.getHealth());
@@ -67,6 +69,50 @@ public class UnitTest {
 
             assertEquals(2, testUnit2.getResistBonus());
         }
+
+    }
+
+    @Nested
+    @DisplayName("Invalid units.Unit variables")
+    class invalidUnitVariables {
+
+        @Test
+        public void nameIsInvalid() {
+            try {
+                Unit testUnit = new InfantryUnit("", 10, 10, 10);
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+
+        @Test
+        public void healthIsInvalid() {
+            try {
+                Unit testUnit = new InfantryUnit("Name", 0, 1, 1);
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+
+        @Test
+        public void attackIsInvalid() {
+            try {
+                Unit testUnit = new InfantryUnit("Name", 1, 0, 1);
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+
+        @Test
+        public void armorIsInvalid() {
+            try {
+                Unit testUnit = new InfantryUnit("Name", 1, 1, -1);
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+
+
     }
 
 }

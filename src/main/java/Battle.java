@@ -1,3 +1,7 @@
+import units.Unit;
+
+import java.util.Random;
+
 /**
  * The class Battle, which simulates a battle between two armies.
  */
@@ -20,26 +24,27 @@ public class Battle {
      * @return the army that successfully defeats all units in the opponent's army
      */
     public Army simulate() {
+        Random rand = new Random();
 
         while (armyOne.hasUnits() && armyTwo.hasUnits()) {
-            Unit armyOneAttacker = armyOne.getRandom();
-            Unit armyTwoDefender = armyTwo.getRandom();
+            Unit attacker;
+            Unit defender;
 
-            armyOneAttacker.attack(armyTwoDefender);
+            int i = rand.nextInt(armyOne.getAllUnits().size()+armyTwo.getAllUnits().size());
 
-            if (armyTwoDefender.getHealth() <= 0) {
-                armyTwo.remove(armyTwoDefender);
+            if (i < armyOne.getAllUnits().size()) {
+                attacker = armyOne.getRandom();
+                defender = armyTwo.getRandom();
+            } else {
+                attacker = armyTwo.getRandom();
+                defender = armyOne.getRandom();
             }
 
-            if (armyTwo.hasUnits()) {
-                Unit armyTwoAttacker = armyTwo.getRandom();
-                Unit armyOneDefender = armyOne.getRandom();
+            attacker.attack(defender);
 
-                armyTwoAttacker.attack(armyOneDefender);
-
-                if (armyOneDefender.getHealth() <= 0) {
-                    armyOne.remove(armyOneDefender);
-                }
+            if (defender.getHealth() <= 0) {
+                if (armyOne.getAllUnits().contains(defender)) armyOne.remove(defender);
+                else armyTwo.remove(defender);
             }
 
 

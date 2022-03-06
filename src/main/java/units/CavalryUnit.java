@@ -1,3 +1,5 @@
+package units;
+
 /**
  * The specialized unit class CavalryUnit, which inherits from the superclass Unit.
  */

@@ -1,3 +1,5 @@
+import units.Unit;
+
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Random;
@@ -37,7 +39,7 @@ public class Army {
 
     /**
      * Adds a new unit to the army.
-     * @param unit a unit that inherits from the superclass Unit.
+     * @param unit a unit that inherits from the superclass units.Unit.
      */
     public void add(Unit unit) {
         units.add(unit);
