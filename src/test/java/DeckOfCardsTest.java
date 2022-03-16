@@ -12,4 +12,12 @@ public class DeckOfCardsTest {
             System.out.println(testDeck.getCards().get(i).getAsString());
         }
     }
+
+    @Test
+    public void dealHand() {
+        DeckOfCards testDeck = new DeckOfCards();
+        System.out.println("The deck contains " + testDeck.getCards().size() + " cards.");
+
+        System.out.println(testDeck.dealHand(10));
+    }
 }

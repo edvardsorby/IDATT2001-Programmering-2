@@ -1,6 +1,8 @@
 package edu.ntnu.idatt2001.edvarso;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Random;
 
 public class DeckOfCards {
     private ArrayList<PlayingCard> cards = new ArrayList<>();
@@ -12,6 +14,20 @@ public class DeckOfCards {
                 cards.add(new PlayingCard(suit[j], i));
             }
         }
+    }
+
+    public HandOfCards dealHand(int n) {
+        Random rand = new Random();
+
+        HandOfCards hand = new HandOfCards();
+
+        for (int i = 0; i < n; i++) {
+            int j = rand.nextInt(cards.size());
+            hand.addCard(cards.get(j));
+            cards.remove(j);
+        }
+
+        return hand;
     }
 
     public ArrayList<PlayingCard> getCards() {
