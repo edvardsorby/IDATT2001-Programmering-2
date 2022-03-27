@@ -16,7 +16,9 @@ public class DeckOfCards {
         }
     }
 
-    public HandOfCards dealHand(int n) {
+    public HandOfCards dealHand(int n) throws IllegalArgumentException {
+        if (n < 5) throw new IllegalArgumentException("You must deal at least 5 cards.");
+
         Random rand = new Random();
 
         HandOfCards hand = new HandOfCards();
