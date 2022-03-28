@@ -3,7 +3,7 @@ import org.junit.jupiter.api.Test;
 import units.*;
 
 public class BattleTest {
-
+    //TODO: Use @BeforeEach to fill in test data before every test.
     @Test
     @DisplayName("Simulate a battle")
     public void simulate() {

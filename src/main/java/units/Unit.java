@@ -38,7 +38,7 @@ public abstract class Unit {
     public void attack (Unit opponent) {
         int newHealth = opponent.getHealth() - (attack + getAttackBonus()) + (opponent.getArmor() + opponent.getResistBonus());
         opponent.setHealth(newHealth);
-
+        //TODO: check for healing
         this.timesAttacked++;
         opponent.timesDefended++;
     }
