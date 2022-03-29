@@ -41,6 +41,6 @@ public class HandOfCards {
         for (PlayingCard playingCard : hand) {
             string.append(" ").append(playingCard);
         }
-        return "Hand: " + string;
+        return String.valueOf(string);
     }
 }
