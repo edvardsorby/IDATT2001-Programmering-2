@@ -1,8 +1,10 @@
-import units.Unit;
+import units.*;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 /**
  * A collection of units that can attack other units in a battle.
@@ -85,6 +87,39 @@ public class Army {
         Random rand = new Random();
         int i = rand.nextInt(units.size());
         return units.get(i);
+    }
+
+    /**
+     * Gets all infantry units from the army
+     * @return a list of infantry units
+     */
+    public List<Unit> getInfantryUnits() {
+        return units.stream().filter(u -> u instanceof InfantryUnit).collect(Collectors.toList());
+    }
+
+    /**
+     * Gets all cavalry units from the army
+     * Inherited Commander Units are excluded
+     * @return a list of cavalry units
+     */
+    public List<Unit> getCavalryUnits() {
+        return units.stream().filter(u -> u instanceof CavalryUnit && !(u instanceof CommanderUnit)).collect(Collectors.toList());
+    }
+
+    /**
+     * Gets all ranged units from the army
+     * @return a list of ranged units
+     */
+    public List<Unit> getRangedUnits() {
+        return units.stream().filter(u -> u instanceof RangedUnit).collect(Collectors.toList());
+    }
+
+    /**
+     * Gets all commander units from the army
+     * @return a list of commander units
+     */
+    public List<Unit> getCommanderUnits() {
+        return units.stream().filter(u -> u instanceof CommanderUnit).collect(Collectors.toList());
     }
 
     @Override
