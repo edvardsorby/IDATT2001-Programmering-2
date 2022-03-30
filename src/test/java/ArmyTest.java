@@ -111,4 +111,26 @@ public class ArmyTest {
             assertEquals(commanderUnits, humanArmy.getCommanderUnits());
         }
     }
+
+    @Test
+    public void writeArmyToFile() {
+        Army humanArmy = new Army("Human army");
+        humanArmy.add(new InfantryUnit("Footman", 100));
+        humanArmy.add(new InfantryUnit("Footman", 100));
+        humanArmy.add(new CommanderUnit("Mountain King", 180));
+
+        Army.writeToFile(humanArmy, "src/main/resources/file.csv");
+    }
+
+    @Test
+    public void readArmyFromFile() {
+        Army humanArmy = new Army("Human army");
+        humanArmy.add(new InfantryUnit("Footman", 100));
+        humanArmy.add(new InfantryUnit("Footman", 100));
+        humanArmy.add(new CommanderUnit("Mountain King", 180));
+
+        Army.writeToFile(humanArmy, "src/main/resources/file.csv");
+
+        System.out.println(Army.readFromFile("src/main/resources/file.csv"));
+    }
 }

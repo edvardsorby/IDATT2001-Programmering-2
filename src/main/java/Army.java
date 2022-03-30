@@ -1,5 +1,9 @@
 import units.*;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -120,6 +124,41 @@ public class Army {
      */
     public List<Unit> getCommanderUnits() {
         return units.stream().filter(u -> u instanceof CommanderUnit).collect(Collectors.toList());
+    }
+
+    /**
+     * Method to write an army to a file
+     * @param army the army to be written
+     */
+    public static void writeToFile(Army army, String targetFile) {
+        try (FileWriter fileWriter = new FileWriter(targetFile)) {
+            StringBuilder string = new StringBuilder(army.getName() + "\n");
+            for (Unit unit : army.units) {
+                string.append(unit.getClass().getSimpleName()).append(",").append(unit.getName())
+                        .append(",").append(unit.getHealth()).append("\n");
+            }
+            fileWriter.write(String.valueOf(string));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Method to read an army from a file
+     * @param file the file to be read
+     */
+    public static String readFromFile(String file) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
+            String army = "";
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                army += line + "\n";
+            }
+            return army;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override
