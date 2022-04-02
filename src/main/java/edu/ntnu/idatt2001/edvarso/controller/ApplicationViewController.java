@@ -96,7 +96,7 @@ public class ApplicationViewController {
      * @throws FileNotFoundException if it fails to locate the image file
      */
     private Image newImage(int imageNr) throws FileNotFoundException {
-        return new Image(new FileInputStream("src/main/resources/images/" + hand.getHand().get(imageNr) + ".png"));
+        return new Image(new FileInputStream("src/main/resources/images/cards/" + hand.getHand().get(imageNr) + ".png"));
     }
 
     /**

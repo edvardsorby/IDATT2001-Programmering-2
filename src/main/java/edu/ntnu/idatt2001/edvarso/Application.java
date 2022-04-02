@@ -22,7 +22,7 @@ public class Application extends javafx.application.Application {
             Scene scene = new Scene(root);
 
             stage.setTitle("Card game");
-            stage.getIcons().add(new Image(new FileInputStream("src/main/resources/images/C1.png")));
+            stage.getIcons().add(new Image(new FileInputStream("src/main/resources/images/icon.png")));
             stage.setScene(scene);
             stage.show();
         } catch (Exception e) {
@@ -33,6 +33,10 @@ public class Application extends javafx.application.Application {
     @Override
     public void stop() {
         System.exit(0);
+    }
+
+    public static void main(String[] args) {
+        launch(args);
     }
 }
 
