@@ -1,4 +1,4 @@
-package edu.ntnu.idatt2001.edvarso;
+package edu.ntnu.idatt2001.edvarso.model;
 
 /**
  * Represents a playing card. A playing card has a number (face) between

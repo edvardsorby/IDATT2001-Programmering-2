@@ -1,7 +1,6 @@
-package edu.ntnu.idatt2001.edvarso;
+package edu.ntnu.idatt2001.edvarso.model;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Random;
 
 public class DeckOfCards {
@@ -24,9 +23,11 @@ public class DeckOfCards {
         HandOfCards hand = new HandOfCards();
 
         for (int i = 0; i < n; i++) {
-            int j = rand.nextInt(cards.size());
-            hand.addCard(cards.get(j));
-            cards.remove(j);
+            if (cards.size() > 0) {
+                int j = rand.nextInt(cards.size());
+                hand.addCard(cards.get(j));
+                cards.remove(j);
+            }
         }
 
         return hand;

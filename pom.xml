@@ -38,7 +38,7 @@
                 <version>0.0.8</version>
                 <configuration>
                     <!-- TODO: Set your main class here -->
-                    <mainClass>edu.ntnu.idatt2001.edvarso.MainApp</mainClass>
+                    <mainClass>edu.ntnu.idatt2001.edvarso.Application</mainClass>
                 </configuration>
             </plugin>
 

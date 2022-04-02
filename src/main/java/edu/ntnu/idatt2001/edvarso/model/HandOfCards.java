@@ -1,10 +1,14 @@
-package edu.ntnu.idatt2001.edvarso;
+package edu.ntnu.idatt2001.edvarso.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class HandOfCards {
     private ArrayList<PlayingCard> hand = new ArrayList<>();
+
+    public ArrayList<PlayingCard> getHand() {
+        return hand;
+    }
 
     public void addCard(PlayingCard card) {
         hand.add(card);
@@ -13,7 +17,7 @@ public class HandOfCards {
     public int calculateSum() {
         return hand.stream().map(PlayingCard::getFace).reduce(Integer::sum).get();
     }
-
+    // TODO: JavaDoc
     public HandOfCards getAllCardsWithSuit(char suit) {
         HandOfCards reducedHand = new HandOfCards();
 

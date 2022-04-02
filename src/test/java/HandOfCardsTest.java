@@ -1,5 +1,5 @@
-import edu.ntnu.idatt2001.edvarso.HandOfCards;
-import edu.ntnu.idatt2001.edvarso.PlayingCard;
+import edu.ntnu.idatt2001.edvarso.model.HandOfCards;
+import edu.ntnu.idatt2001.edvarso.model.PlayingCard;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

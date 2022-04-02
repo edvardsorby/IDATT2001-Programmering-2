@@ -1,25 +1,30 @@
 package edu.ntnu.idatt2001.edvarso;
 
-import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+import java.io.FileInputStream;
 import java.net.URL;
 
-public class MyApplication extends Application {
+public class Application extends javafx.application.Application {
 
     @Override
     public void start(Stage stage) {
         try {
-            URL url = getClass().getResource("/ApplicationView.fxml");
+            URL url = getClass().getResource("/applicationView.fxml");
             Parent root = FXMLLoader.load(url);
             Scene scene = new Scene(root);
 
-            stage.setTitle("Cardgame");
+
+
+            stage.setTitle("Card game");
+            stage.getIcons().add(new Image(new FileInputStream("src/main/resources/images/C1.png")));
             stage.setScene(scene);
             stage.show();
+
 
         } catch (Exception e) {
             System.out.println(e);
