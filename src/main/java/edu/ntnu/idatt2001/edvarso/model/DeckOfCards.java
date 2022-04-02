@@ -3,10 +3,16 @@ package edu.ntnu.idatt2001.edvarso.model;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * The class representing a deck of cards.
+ */
 public class DeckOfCards {
     private ArrayList<PlayingCard> cards = new ArrayList<>();
     private final char[] suit = { 'S', 'H', 'D', 'C' };
 
+    /**
+     * Instantiates a new deck with 52 cards.
+     */
     public DeckOfCards() {
         for (int i = 1; i <= 13; i++) {
             for (int j = 0; j < 4; j++) {
@@ -15,6 +21,13 @@ public class DeckOfCards {
         }
     }
 
+    /**
+     * Deals a hand of cards.
+     *
+     * @param n the number of cards to be dealt
+     * @return the hand
+     * @throws IllegalArgumentException if the number of requested cards is less than 5
+     */
     public HandOfCards dealHand(int n) throws IllegalArgumentException {
         if (n < 5) throw new IllegalArgumentException("You must deal at least 5 cards.");
 
@@ -33,6 +46,10 @@ public class DeckOfCards {
         return hand;
     }
 
+    /**
+     * Gets all the cards in the hand.
+     * @return a list of cards
+     */
     public ArrayList<PlayingCard> getCards() {
         return cards;
     }
