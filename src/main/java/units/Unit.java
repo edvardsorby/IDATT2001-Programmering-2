@@ -1,5 +1,7 @@
 package units;
 
+import java.util.Objects;
+
 /**
  * The abstract superclass Unit.
  * All specialized unit classes inherit from this superclass.
@@ -77,6 +79,8 @@ public abstract class Unit {
 
     /**
      * Sets the unit's health value.
+     * There is no exception thrown here to allow the unit's health to get below 0 after an attack,
+     * which then removes it from the army, in the Battle.simulate method.
      * @param health the new health value for the unit
      */
     public void setHealth(int health) {
@@ -122,5 +126,18 @@ public abstract class Unit {
      */
     public int getTimesDefended() {
         return timesDefended;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Unit unit = (Unit) o;
+        return health == unit.health && attack == unit.attack && armor == unit.armor && Objects.equals(name, unit.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, health, attack, armor);
     }
 }

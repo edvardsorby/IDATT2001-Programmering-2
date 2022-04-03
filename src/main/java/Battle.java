@@ -30,7 +30,7 @@ public class Battle {
             Unit attacker;
             Unit defender;
 
-            int i = rand.nextInt(armyOne.getAllUnits().size()+armyTwo.getAllUnits().size());
+            int i = rand.nextInt(armyOne.getAllUnits().size() + armyTwo.getAllUnits().size());
 
             if (i < armyOne.getAllUnits().size()) {
                 attacker = armyOne.getRandom();
@@ -50,11 +50,8 @@ public class Battle {
 
         }
 
-        if (armyOne.hasUnits()) {
-            return armyOne;
-        } else {
-            return armyTwo;
-        }
+        if (armyOne.hasUnits()) return armyOne;
+        else return armyTwo;
 
     }
 

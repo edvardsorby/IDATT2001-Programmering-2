@@ -129,8 +129,9 @@ public class Army {
     /**
      * Method to write an army to a file
      * @param army the army to be written
+     * @param targetFile the path of the target file
      */
-    public static void writeToFile(Army army, String targetFile) {
+    public static void writeToFile(Army army, String targetFile) throws IllegalArgumentException{
         try (FileWriter fileWriter = new FileWriter(targetFile)) {
             StringBuilder string = new StringBuilder(army.getName() + "\n");
             for (Unit unit : army.units) {
@@ -139,26 +140,40 @@ public class Army {
             }
             fileWriter.write(String.valueOf(string));
         } catch (IOException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+            throw new IllegalArgumentException("Invalid file path");
         }
     }
 
     /**
      * Method to read an army from a file
-     * @param file the file to be read
+     * @param file the path to the file containing an army
      */
-    public static String readFromFile(String file) {
+    public static Army readFromFile(String file) throws IllegalArgumentException{
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
-            String army = "";
             String line;
+            ArrayList<Unit> newUnits = new ArrayList<>();
+            String armyName = bufferedReader.readLine();
             while ((line = bufferedReader.readLine()) != null) {
-                army += line + "\n";
+                String[] unitString = line.split(",");
+                String unitType = unitString[0];
+                String unitName = unitString[1];
+                int unitHealth = Integer.parseInt(unitString[2]);
+
+                Unit newUnit = switch (unitType) {
+                    case "InfantryUnit" -> new InfantryUnit(unitName, unitHealth);
+                    case "CavalryUnit" -> new CavalryUnit(unitName, unitHealth);
+                    case "RangedUnit" -> new RangedUnit(unitName, unitHealth);
+                    case "CommanderUnit" -> new CommanderUnit(unitName, unitHealth);
+                    default -> null;
+                };
+                newUnits.add(newUnit);
             }
-            return army;
-        } catch (IOException e) {
-            e.printStackTrace();
+            return new Army(armyName, newUnits);
+        } catch (Exception e) {
+            //e.printStackTrace();
+            throw new IllegalArgumentException("Invalid army file");
         }
-        return null;
     }
 
     @Override

@@ -1,9 +1,12 @@
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import units.*;
+import units.InfantryUnit;
+import units.RangedUnit;
+import units.Unit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class UnitTest {
 
@@ -78,38 +81,22 @@ public class UnitTest {
 
         @Test
         public void nameIsInvalid() {
-            try {
-                Unit testUnit = new InfantryUnit("", 10, 10, 10);
-            } catch (Exception e) {
-                System.out.println(e);
-            }
+            assertThrows(IllegalArgumentException.class, () -> new InfantryUnit("", 1, 1, 1));
         }
 
         @Test
         public void healthIsInvalid() {
-            try {
-                Unit testUnit = new InfantryUnit("Name", 0, 1, 1);
-            } catch (Exception e) {
-                System.out.println(e);
-            }
+            assertThrows(IllegalArgumentException.class, () -> new InfantryUnit("Name", 0, 1, 1));
         }
 
         @Test
         public void attackIsInvalid() {
-            try {
-                Unit testUnit = new InfantryUnit("Name", 1, 0, 1);
-            } catch (Exception e) {
-                System.out.println(e);
-            }
+            assertThrows(IllegalArgumentException.class, () -> new InfantryUnit("Name", 1, 0, 1));
         }
 
         @Test
         public void armorIsInvalid() {
-            try {
-                Unit testUnit = new InfantryUnit("Name", 1, 1, -1);
-            } catch (Exception e) {
-                System.out.println(e);
-            }
+            assertThrows(IllegalArgumentException.class, () -> new InfantryUnit("Name", 1, 1, -1));
         }
 
 

@@ -2,10 +2,11 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import units.*;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ArmyTest {
 
@@ -119,18 +120,35 @@ public class ArmyTest {
         humanArmy.add(new InfantryUnit("Footman", 100));
         humanArmy.add(new CommanderUnit("Mountain King", 180));
 
-        Army.writeToFile(humanArmy, "src/main/resources/file.csv");
+        assertDoesNotThrow(() -> Army.writeToFile(humanArmy, "src/test/resources/human-army.csv"));
     }
 
     @Test
-    public void readArmyFromFile() {
+    public void writeArmyToInvalidPath() {
         Army humanArmy = new Army("Human army");
         humanArmy.add(new InfantryUnit("Footman", 100));
         humanArmy.add(new InfantryUnit("Footman", 100));
         humanArmy.add(new CommanderUnit("Mountain King", 180));
 
-        Army.writeToFile(humanArmy, "src/main/resources/file.csv");
+        assertThrows(IllegalArgumentException.class, () -> Army.writeToFile(humanArmy, "invalid-path/human-army.csv"));
+    }
 
-        System.out.println(Army.readFromFile("src/main/resources/file.csv"));
+    @Test
+    public void writeAndReadArmyFromFile() {
+        Army humanArmy = new Army("Human army");
+        humanArmy.add(new InfantryUnit("Footman", 100));
+        humanArmy.add(new InfantryUnit("Footman", 100));
+        humanArmy.add(new CommanderUnit("Mountain King", 180));
+
+        System.out.println("Expected: " + humanArmy);
+        System.out.println("Result:   " + Army.readFromFile("src/test/resources/human-army.csv"));
+
+        assertEquals(humanArmy, Army.readFromFile("src/test/resources/human-army.csv"));
+    }
+
+    @Test
+    public void readInvalidFile() {
+        assertThrows(IllegalArgumentException.class, () -> Army.readFromFile("src/test/resources/invalid-army.csv"));
+
     }
 }
