@@ -39,10 +39,9 @@ public class HandOfCards {
      * @return all cards in the hand with that suit
      */
     public HandOfCards getAllCardsWithSuit(char suit) {
-        HandOfCards reducedHand = new HandOfCards();
-
         List<PlayingCard> reducedHandList = hand.stream().filter(p -> p.getSuit() == suit).toList();
 
+        HandOfCards reducedHand = new HandOfCards();
         reducedHandList.forEach(reducedHand::addCard);
 
         return reducedHand;
@@ -61,7 +60,6 @@ public class HandOfCards {
      * @return true or false
      */
     public boolean isFlush() {
-
         return hand.stream().map(PlayingCard::getSuit)
                 .anyMatch(suit -> hand.stream().filter(card -> card.getSuit() == suit).count() >= 5);
     }

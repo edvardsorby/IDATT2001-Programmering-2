@@ -71,7 +71,8 @@ public class ApplicationViewController {
     private void checkHandClicked() {
         if (hand != null) {
             sumOfFacesText.setText(String.valueOf(hand.calculateSum()));
-            cardsOfHeartsText.setText(String.valueOf(hand.getAllCardsWithSuit('H')));
+            cardsOfHeartsText.setText(hand.getAllCardsWithSuit('H')
+                    .getHand().size() > 0 ? String.valueOf(hand.getAllCardsWithSuit('H')) : "No Hearts");
             queenOfSpadesText.setText((hand.queenOfSpadesExists()) ? "Yes" : "No");
             flushText.setText((hand.isFlush()) ? "Yes" : "No");
         } else {
