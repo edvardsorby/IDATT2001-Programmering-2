@@ -28,19 +28,28 @@ public class RangedUnit extends Unit{
 
     /**
      * Gets the ranged unit's attack bonus.
-     * @return returns a fixed attack bonus
+     * @param terrain the terrain where the attack happens
+     * @return returns the calculated attack bonus, which is higher if the terrain is "HILL",
+     * and lower if the terrain is "FOREST"
      */
     @Override
-    public int getAttackBonus() {
-        return 3;
+    public int getAttackBonus(String terrain) {
+        if (terrain.equals("HILL")) {
+            return 6;
+        } else if (terrain.equals("FOREST")) {
+            return 1;
+        } else {
+            return 3;
+        }
     }
 
     /**
      * Gets the ranged unit's resist bonus.
+     * @param terrain the terrain where the defense happens
      * @return the calculated resist bonus, based on the number of times defended an attack so far
      */
     @Override
-    public int getResistBonus() {
+    public int getResistBonus(String terrain) {
         int resistBonus = 2;
 
         if (getTimesDefended() == 0) {

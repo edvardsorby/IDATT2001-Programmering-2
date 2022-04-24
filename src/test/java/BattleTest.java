@@ -19,7 +19,7 @@ public class BattleTest {
         for (int i = 0; i < 200; i++) orcishHorde.add(new RangedUnit("Spearman", 100));
         orcishHorde.add(new CommanderUnit("Gul'dan", 180));
 
-        Battle battle = new Battle(humanArmy, orcishHorde);
+        Battle battle = new Battle(humanArmy, orcishHorde, "HILL");
 
         System.out.println(battle.simulate().getName() + " won the battle.");
     }
@@ -43,7 +43,7 @@ public class BattleTest {
             for (int i = 0; i < 200; i++) orcishHorde.add(new RangedUnit("Spearman", 100));
             orcishHorde.add(new CommanderUnit("Gul'dan", 180));
 
-            Battle battle = new Battle(humanArmy, orcishHorde);
+            Battle battle = new Battle(humanArmy, orcishHorde, "HILL");
 
             if (battle.simulate().equals(humanArmy)) {
                 humanWins++;

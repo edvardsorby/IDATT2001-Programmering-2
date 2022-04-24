@@ -27,19 +27,29 @@ public class InfantryUnit extends Unit{
 
     /**
      * Gets the infantry unit's attack bonus.
-     * @return returns a fixed attack bonus
+     * @param terrain the terrain where the attack happens
+     * @return returns an attack bonus, which is higher if the terrain is "FOREST"
      */
     @Override
-    public int getAttackBonus() {
-        return 2;
+    public int getAttackBonus(String terrain) {
+        if (terrain.equals("FOREST")) {
+            return 4;
+        } else {
+            return 2;
+        }
     }
 
     /**
      * Gets the infantry unit's resist bonus.
-     * @return returns a fixed resist bonus
+     * @param terrain the terrain where the defense happens
+     * @return returns a resist bonus, which is higher if the terrain is "FOREST"
      */
     @Override
-    public int getResistBonus() {
-        return 1;
+    public int getResistBonus(String terrain) {
+        if (terrain.equals("FOREST")) {
+            return 2;
+        } else {
+            return 1;
+        }
     }
 }

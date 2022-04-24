@@ -16,7 +16,7 @@ public class UnitFactory {
      * @param health the unit's health
      * @return a new unit object
      */
-    public static Unit getUnit(String unitType, String name, int health) {
+    public static Unit getUnit(String unitType, String name, int health) throws IllegalArgumentException {
 
         if (unitType == null) {
             return null;
@@ -30,9 +30,9 @@ public class UnitFactory {
             return new RangedUnit(name, health);
         } else if (unitType.equalsIgnoreCase("CommanderUnit")) {
             return new CommanderUnit(name, health);
+        } else {
+            throw new IllegalArgumentException("Invalid unit type");
         }
-
-        return null;
     }
 
     /**
@@ -43,7 +43,8 @@ public class UnitFactory {
      * @param n the number of units in the list
      * @return a list of units
      */
-    public static ArrayList<Unit> getUnits(String unitType, String name, int health, int n) {
+    public static ArrayList<Unit> getUnits(String unitType, String name, int health, int n)
+            throws IllegalArgumentException {
 
         if (unitType == null) {
             return null;
@@ -60,6 +61,8 @@ public class UnitFactory {
                 units.add(new RangedUnit(name, health));
             } else if (unitType.equalsIgnoreCase("CommanderUnit")) {
                 units.add(new CommanderUnit(name, health));
+            } else {
+                throw new IllegalArgumentException("Invalid unit type");
             }
         }
 

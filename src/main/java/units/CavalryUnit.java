@@ -28,14 +28,20 @@ public class CavalryUnit extends Unit{
 
     /**
      * Gets the cavalry unit's attack bonus.
-     * @return the calculated attack bonus, based on the numbers of attacks performed so far
+     * @param terrain the terrain where the attack happens
+     * @return the calculated attack bonus, based on the numbers of attacks performed so far,
+     * and whether the terrain is "PLAINS"
      */
     @Override
-    public int getAttackBonus() {
+    public int getAttackBonus(String terrain) {
         int attackBonus = 2;
 
+        if (terrain.equals("PLAINS")) {
+            attackBonus += 2;
+        }
+
         if (getTimesAttacked() == 0) {
-            attackBonus = 4 + 2;
+            attackBonus += 4;
         }
 
         return attackBonus;
@@ -43,11 +49,16 @@ public class CavalryUnit extends Unit{
 
     /**
      * Gets the cavalry unit's resist bonus.
-     * @return a fixed resist bonus
+     * @param terrain the terrain where the defense happens
+     * @return the resist bonus, which is 0 if the terrain is "FOREST"
      */
     @Override
-    public int getResistBonus() {
-        return 1;
+    public int getResistBonus(String terrain) {
+        if (terrain.equals("FOREST")) {
+            return 0;
+        } else {
+            return 1;
+        }
     }
 
 }

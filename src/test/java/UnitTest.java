@@ -1,3 +1,4 @@
+import factory.UnitFactory;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -26,7 +27,7 @@ public class UnitTest {
         Unit testUnit1 = new InfantryUnit("testName1", 100);
         Unit testUnit2 = new InfantryUnit("testName2", 100);
 
-        testUnit1.attack(testUnit2);
+        testUnit1.attack(testUnit2, "HILL");
 
         // Formula:
         // health[defender] - (attack + attackBonus)[attacker] + (armor + resistBonus)[defender];
@@ -39,7 +40,7 @@ public class UnitTest {
     public void testInfantryUnitResistBonus() {
         Unit testUnit = new InfantryUnit("testName1", 100);
 
-        assertEquals(1, testUnit.getResistBonus());
+        assertEquals(1, testUnit.getResistBonus("HILL"));
     }
 
     @Nested
@@ -53,24 +54,24 @@ public class UnitTest {
         @DisplayName("Test rangedUnit resistBonus before any attacks")
         public void testRangedUnitResistBonusBeforeAnyAttacks() {
 
-            assertEquals(6, testUnit1.getResistBonus());
+            assertEquals(6, testUnit1.getResistBonus("PLAINS"));
         }
 
         @Test
         public void testRangedUnitResistBonusAfterOneAttack() {
 
-            testUnit1.attack(testUnit2);
+            testUnit1.attack(testUnit2, "PLAINS");
 
-            assertEquals(4, testUnit2.getResistBonus());
+            assertEquals(4, testUnit2.getResistBonus("PLAINS"));
         }
 
         @Test
         public void testRangedUnitResistBonusAfterTwoAttacks() {
 
-            testUnit1.attack(testUnit2);
-            testUnit1.attack(testUnit2);
+            testUnit1.attack(testUnit2, "PLAINS");
+            testUnit1.attack(testUnit2, "PLAINS");
 
-            assertEquals(2, testUnit2.getResistBonus());
+            assertEquals(2, testUnit2.getResistBonus("PLAINS"));
         }
 
     }
@@ -102,4 +103,41 @@ public class UnitTest {
 
     }
 
+    @Nested
+    @DisplayName("Terrain type bonus tests")
+    class terrainTypeBonusTests {
+        Unit infantryUnit = UnitFactory.getUnit("InfantryUnit", "Infantry unit", 100);
+        Unit rangedUnit = UnitFactory.getUnit("RangedUnit", "Infantry unit", 100);
+        Unit cavalryUnit = UnitFactory.getUnit("CavalryUnit", "Infantry unit", 100);
+
+        @Test
+        public void infantryUnitForestAttackBonus() {
+            assertEquals(4, infantryUnit.getAttackBonus("FOREST"));
+        }
+
+        @Test
+        public void infantryUnitForestResistBonus() {
+            assertEquals(2, infantryUnit.getResistBonus("FOREST"));
+        }
+
+        @Test
+        public void rangedUnitHillAttackBonus() {
+            assertEquals(6, rangedUnit.getAttackBonus("HILL"));
+        }
+
+        @Test
+        public void rangedUnitForestAttackBonus() {
+            assertEquals(1, rangedUnit.getAttackBonus("FOREST"));
+        }
+
+        @Test
+        public void cavalryUnitPlainsAttackBonus() {
+            assertEquals(8, cavalryUnit.getAttackBonus("PLAINS"));
+        }
+
+        @Test
+        public void cavalryUnitForestResistBonus() {
+            assertEquals(0, cavalryUnit.getResistBonus("FOREST"));
+        }
+    }
 }

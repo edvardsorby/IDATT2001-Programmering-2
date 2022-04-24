@@ -39,8 +39,8 @@ public abstract class Unit {
      *
      * @param opponent the opponent to attack
      */
-    public void attack (Unit opponent) {
-        int newHealth = opponent.getHealth() - (attack + getAttackBonus()) + (opponent.getArmor() + opponent.getResistBonus());
+    public void attack (Unit opponent, String terrain) {
+        int newHealth = opponent.getHealth() - (attack + getAttackBonus(terrain)) + (opponent.getArmor() + opponent.getResistBonus(terrain));
 
         if (newHealth < 0) {
             opponent.setHealth(0);
@@ -109,15 +109,17 @@ public abstract class Unit {
 
     /**
      * Gets the unit's attack bonus.
+     * @param terrain the terrain where the unit is attacking
      * @return the attack bonus of the unit
      */
-    public abstract int getAttackBonus();
+    public abstract int getAttackBonus(String terrain);
 
     /**
      * Gets the unit's resist bonus.
+     * @param terrain the terrain where the unit is defending
      * @return the resist bonus of the unit
      */
-    public abstract int getResistBonus();
+    public abstract int getResistBonus(String terrain);
 
     /**
      * Gets the number of times the unit has attacked another unit.

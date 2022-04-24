@@ -6,17 +6,24 @@ import java.util.Random;
  * The class Battle, which simulates a battle between two armies.
  */
 public class Battle {
-    Army armyOne;
-    Army armyTwo;
+    private final Army armyOne;
+    private final Army armyTwo;
+    private final String terrain;
 
     /**
      * The constructor for the Battle class.
      * @param armyOne the first of the two battling armies
      * @param armyTwo the second of the two battling armies
      */
-    public Battle(Army armyOne, Army armyTwo) {
+    public Battle(Army armyOne, Army armyTwo, String terrain) {
+        if (!(terrain.equalsIgnoreCase("HILL") ||
+                terrain.equalsIgnoreCase("PLAINS") ||
+                terrain.equalsIgnoreCase("FOREST"))) {
+            throw new IllegalArgumentException("The terrain must be either \"HILL\", \"PLAINS\" or \"FOREST\"");
+        }
         this.armyOne = armyOne;
         this.armyTwo = armyTwo;
+        this.terrain = terrain.toUpperCase();
     }
 
     /**
@@ -40,7 +47,7 @@ public class Battle {
                 defender = armyOne.getRandom();
             }
 
-            attacker.attack(defender);
+            attacker.attack(defender, terrain);
 
             if (defender.getHealth() == 0) {
                 if (armyOne.getAllUnits().contains(defender)) armyOne.remove(defender);
