@@ -35,12 +35,19 @@ public abstract class Unit {
 
     /**
      * Performs an attack on an opponent.
+     * A new health value is calculated for the defending unit
+     *
      * @param opponent the opponent to attack
      */
     public void attack (Unit opponent) {
         int newHealth = opponent.getHealth() - (attack + getAttackBonus()) + (opponent.getArmor() + opponent.getResistBonus());
-        opponent.setHealth(newHealth);
-        //TODO: check for healing
+
+        if (newHealth < 0) {
+            opponent.setHealth(0);
+        } else if (newHealth < opponent.getHealth()){
+            opponent.setHealth(newHealth);
+        }
+
         this.timesAttacked++;
         opponent.timesDefended++;
     }
@@ -79,11 +86,11 @@ public abstract class Unit {
 
     /**
      * Sets the unit's health value.
-     * There is no exception thrown here to allow the unit's health to get below 0 after an attack,
-     * which then removes it from the army, in the Battle.simulate method.
      * @param health the new health value for the unit
      */
-    public void setHealth(int health) {
+    public void setHealth(int health) throws IllegalArgumentException {
+        if (health < 0) throw new IllegalArgumentException("The health value cannot be less than 0");
+
         this.health = health;
     }
 

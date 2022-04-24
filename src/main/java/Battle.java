@@ -42,7 +42,7 @@ public class Battle {
 
             attacker.attack(defender);
 
-            if (defender.getHealth() <= 0) {
+            if (defender.getHealth() == 0) {
                 if (armyOne.getAllUnits().contains(defender)) armyOne.remove(defender);
                 else armyTwo.remove(defender);
             }
