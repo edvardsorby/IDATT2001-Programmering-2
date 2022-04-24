@@ -1,7 +1,0 @@
-Army.class
-units\CavalryUnit.class
-Battle.class
-units\CommanderUnit.class
-units\Unit.class
-units\RangedUnit.class
-units\InfantryUnit.class
