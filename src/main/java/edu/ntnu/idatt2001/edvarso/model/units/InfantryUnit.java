@@ -1,4 +1,4 @@
-package units;
+package edu.ntnu.idatt2001.edvarso.model.units;
 
 /**
  * The specialized unit class InfantryUnit, which inherits from the superclass Unit.

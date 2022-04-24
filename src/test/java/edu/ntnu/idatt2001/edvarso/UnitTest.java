@@ -1,10 +1,12 @@
-import factory.UnitFactory;
+package edu.ntnu.idatt2001.edvarso;
+
+import edu.ntnu.idatt2001.edvarso.model.factory.UnitFactory;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import units.InfantryUnit;
-import units.RangedUnit;
-import units.Unit;
+import edu.ntnu.idatt2001.edvarso.model.units.InfantryUnit;
+import edu.ntnu.idatt2001.edvarso.model.units.RangedUnit;
+import edu.ntnu.idatt2001.edvarso.model.units.Unit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;

@@ -1,4 +1,4 @@
-package units;
+package edu.ntnu.idatt2001.edvarso.model.units;
 
 /**
  * The specialized unit class CommanderUnit, which inherits from the class units.CavalryUnit.

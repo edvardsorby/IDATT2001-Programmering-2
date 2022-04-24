@@ -1,4 +1,4 @@
-package units;
+package edu.ntnu.idatt2001.edvarso.model.units;
 
 import java.util.Objects;
 

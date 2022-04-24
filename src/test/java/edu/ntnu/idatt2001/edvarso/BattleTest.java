@@ -1,6 +1,13 @@
+package edu.ntnu.idatt2001.edvarso;
+
+import edu.ntnu.idatt2001.edvarso.model.army.Army;
+import edu.ntnu.idatt2001.edvarso.model.battle.Battle;
+import edu.ntnu.idatt2001.edvarso.model.units.CavalryUnit;
+import edu.ntnu.idatt2001.edvarso.model.units.CommanderUnit;
+import edu.ntnu.idatt2001.edvarso.model.units.InfantryUnit;
+import edu.ntnu.idatt2001.edvarso.model.units.RangedUnit;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import units.*;
 
 public class BattleTest {
     //TODO: Use @BeforeEach to fill in test data before each test.

@@ -1,4 +1,6 @@
-import units.*;
+package edu.ntnu.idatt2001.edvarso.model.army;
+
+import edu.ntnu.idatt2001.edvarso.model.units.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -18,7 +20,7 @@ public class Army {
     private ArrayList<Unit> units = new ArrayList<Unit>();
 
     /**
-     * Constructor for the Army class, which takes the name of the army as a parameter.
+     * Constructor for the model.army.Army class, which takes the name of the army as a parameter.
      * @param name the name of the army
      */
     public Army(String name) {
@@ -26,7 +28,7 @@ public class Army {
     }
 
     /**
-     * Constructor for the Army class, which takes the name of the army as a parameter, in addition to a list of units.
+     * Constructor for the model.army.Army class, which takes the name of the army as a parameter, in addition to a list of units.
      * @param name the name of the army
      * @param units a list containing units for the army
      */
@@ -178,7 +180,7 @@ public class Army {
 
     @Override
     public String toString() {
-        return "Army: " +
+        return "model.army.Army: " +
                 name +
                 ", units: " + units;
     }

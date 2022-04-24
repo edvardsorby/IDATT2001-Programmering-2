@@ -1,9 +1,10 @@
+package edu.ntnu.idatt2001.edvarso;
+
+import edu.ntnu.idatt2001.edvarso.model.army.Army;
+import edu.ntnu.idatt2001.edvarso.model.units.*;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import units.*;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;

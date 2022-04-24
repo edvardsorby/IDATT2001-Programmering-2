@@ -1,9 +1,12 @@
-import units.Unit;
+package edu.ntnu.idatt2001.edvarso.model.battle;
+
+import edu.ntnu.idatt2001.edvarso.model.army.Army;
+import edu.ntnu.idatt2001.edvarso.model.units.Unit;
 
 import java.util.Random;
 
 /**
- * The class Battle, which simulates a battle between two armies.
+ * The class model.battle.Battle, which simulates a battle between two armies.
  */
 public class Battle {
     private final Army armyOne;
@@ -11,7 +14,7 @@ public class Battle {
     private final String terrain;
 
     /**
-     * The constructor for the Battle class.
+     * The constructor for the model.battle.Battle class.
      * @param armyOne the first of the two battling armies
      * @param armyTwo the second of the two battling armies
      */
@@ -64,6 +67,6 @@ public class Battle {
 
     @Override
     public String toString() {
-        return "Battle: " + armyOne + " vs " + armyTwo;
+        return "model.battle.Battle: " + armyOne + " vs " + armyTwo;
     }
 }

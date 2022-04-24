@@ -1,6 +1,6 @@
-package factory;
+package edu.ntnu.idatt2001.edvarso.model.factory;
 
-import units.*;
+import edu.ntnu.idatt2001.edvarso.model.units.*;
 
 import java.util.ArrayList;
 
