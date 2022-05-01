@@ -6,7 +6,7 @@ import edu.ntnu.idatt2001.edvarso.model.units.Unit;
 import java.util.Random;
 
 /**
- * The class model.battle.Battle, which simulates a battle between two armies.
+ * The class Battle, which simulates a battle between two armies.
  */
 public class Battle {
     private final Army armyOne;
@@ -17,6 +17,8 @@ public class Battle {
      * The constructor for the model.battle.Battle class.
      * @param armyOne the first of the two battling armies
      * @param armyTwo the second of the two battling armies
+     * @param terrain the terrain where the battle takes place.
+     *                Must be either "HILL", "PLAINS" or "FOREST".
      */
     public Battle(Army armyOne, Army armyTwo, String terrain) {
         if (!(terrain.equalsIgnoreCase("HILL") ||
@@ -67,6 +69,6 @@ public class Battle {
 
     @Override
     public String toString() {
-        return "model.battle.Battle: " + armyOne + " vs " + armyTwo;
+        return "Battle: " + armyOne + " vs " + armyTwo;
     }
 }

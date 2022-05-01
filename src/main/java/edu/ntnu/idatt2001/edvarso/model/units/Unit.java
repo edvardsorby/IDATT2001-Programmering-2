@@ -38,6 +38,7 @@ public abstract class Unit {
      * A new health value is calculated for the defending unit
      *
      * @param opponent the opponent to attack
+     * @param terrain the terrain where the attack happens
      */
     public void attack (Unit opponent, String terrain) {
         int newHealth = opponent.getHealth() - (attack + getAttackBonus(terrain)) + (opponent.getArmor() + opponent.getResistBonus(terrain));
@@ -95,19 +96,6 @@ public abstract class Unit {
     }
 
     /**
-     * Formats the unit with a toString method.
-     * @return a short description of the unit and its values
-     */
-    @Override
-    public String toString() {
-        return "units.Unit: " +
-                "Name: " + name +
-                ", health: " + health +
-                ", attack: " + attack +
-                ", armor: " + armor;
-    }
-
-    /**
      * Gets the unit's attack bonus.
      * @param terrain the terrain where the unit is attacking
      * @return the attack bonus of the unit
@@ -137,6 +125,15 @@ public abstract class Unit {
         return timesDefended;
     }
 
+    /**
+     * Gets the type of the current unit.
+     * Used for the PropertyValueFactory in ArmySelectionController
+     * @return the unit type as a String
+     */
+    public String getUnitType() {
+        return this.getClass().getSimpleName().replace("Unit", " unit");
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -148,5 +145,18 @@ public abstract class Unit {
     @Override
     public int hashCode() {
         return Objects.hash(name, health, attack, armor);
+    }
+
+    /**
+     * Formats the unit with a toString method.
+     * @return a short description of the unit and its values
+     */
+    @Override
+    public String toString() {
+        return "Unit: " +
+                "Name: " + name +
+                ", health: " + health +
+                ", attack: " + attack +
+                ", armor: " + armor;
     }
 }

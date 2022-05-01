@@ -113,43 +113,4 @@ public class ArmyTest {
             assertEquals(commanderUnits, humanArmy.getCommanderUnits());
         }
     }
-
-    @Test
-    public void writeArmyToFile() {
-        Army humanArmy = new Army("Human army");
-        humanArmy.add(new InfantryUnit("Footman", 100));
-        humanArmy.add(new InfantryUnit("Footman", 100));
-        humanArmy.add(new CommanderUnit("Mountain King", 180));
-
-        assertDoesNotThrow(() -> Army.writeToFile(humanArmy, "src/test/resources/human-army.csv"));
-    }
-
-    @Test
-    public void writeArmyToInvalidPath() {
-        Army humanArmy = new Army("Human army");
-        humanArmy.add(new InfantryUnit("Footman", 100));
-        humanArmy.add(new InfantryUnit("Footman", 100));
-        humanArmy.add(new CommanderUnit("Mountain King", 180));
-
-        assertThrows(IllegalArgumentException.class, () -> Army.writeToFile(humanArmy, "invalid-path/human-army.csv"));
-    }
-
-    @Test
-    public void writeAndReadArmyFromFile() {
-        Army humanArmy = new Army("Human army");
-        humanArmy.add(new InfantryUnit("Footman", 100));
-        humanArmy.add(new InfantryUnit("Footman", 100));
-        humanArmy.add(new CommanderUnit("Mountain King", 180));
-
-        System.out.println("Expected: " + humanArmy);
-        System.out.println("Result:   " + Army.readFromFile("src/test/resources/human-army.csv"));
-
-        assertEquals(humanArmy, Army.readFromFile("src/test/resources/human-army.csv"));
-    }
-
-    @Test
-    public void readInvalidFile() {
-        assertThrows(IllegalArgumentException.class, () -> Army.readFromFile("src/test/resources/invalid-army.csv"));
-
-    }
 }

@@ -142,4 +142,10 @@ public class UnitTest {
             assertEquals(0, cavalryUnit.getResistBonus("FOREST"));
         }
     }
+
+    @Test
+    public void getCorrectUnitType() {
+        Unit testUnit = UnitFactory.getUnit("commanderUnit", "Soldier", 100);
+        assertEquals("Commander unit", testUnit.getUnitType());
+    }
 }
