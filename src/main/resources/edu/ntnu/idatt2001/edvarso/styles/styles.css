@@ -1,5 +1,8 @@
 .background{
     -fx-background-color: #333333;
+    -fx-background-image: url("background.jpg");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
 }
 
 .buttons{
