@@ -2,6 +2,7 @@ package edu.ntnu.idatt2001.edvarso.controller;
 
 import edu.ntnu.idatt2001.edvarso.Application;
 import edu.ntnu.idatt2001.edvarso.model.army.Army;
+import edu.ntnu.idatt2001.edvarso.model.factory.DialogFactory;
 import edu.ntnu.idatt2001.edvarso.model.fileHandler.FileHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -127,7 +128,6 @@ public class ArmySelectionController {
 
     /**
      * Changes the scene to the battle simulation
-     * @throws IOException
      */
     @FXML
     private void goToSimulation() throws IOException {
@@ -141,11 +141,7 @@ public class ArmySelectionController {
             Stage stage = Application.stage;
             stage.getScene().setRoot(root);
         } else {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Wargames");
-            alert.setHeaderText(null);
-            alert.setContentText("Please select both armies and the terrain");
-            alert.showAndWait();
+            DialogFactory.showDialog("Please select both armies and the terrain");
         }
     }
 
@@ -219,6 +215,17 @@ public class ArmySelectionController {
         displayArmyData();
     }
 
-    // TODO: Add ability to create and save armies.
+    /**
+     * Changes the scene to the "create new army" page
+     */
+    @FXML
+    public void createNewArmy() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/ntnu/idatt2001/edvarso/view/createArmy.fxml"));
+        Parent root = loader.load();
+
+        Stage stage = Application.stage;
+        stage.getScene().setRoot(root);
+
+    }
 
 }

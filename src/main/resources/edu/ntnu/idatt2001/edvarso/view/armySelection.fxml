@@ -23,7 +23,7 @@
                <children>
                   <Button mnemonicParsing="false" onAction="#selectArmy1" styleClass="buttons" stylesheets="@../styles/styles.css" text="Select army 1" />
                   <Text fx:id="fileSelected1Text" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="No file selected" />
-                  <Label fx:id="armyName1Label" text="No army selected" underline="true">
+                  <Label fx:id="armyName1Label" text="No army selected" textFill="WHITE" underline="true">
                      <font>
                         <Font name="Dubai Medium" size="32.0" />
                      </font>
@@ -49,7 +49,7 @@
                <children>
                   <Button mnemonicParsing="false" onAction="#selectArmy2" styleClass="buttons" stylesheets="@../styles/styles.css" text="Select army 2" />
                   <Text fx:id="fileSelected2Text" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="No file selected" />
-                  <Label fx:id="armyName2Label" text="No army selected" underline="true">
+                  <Label fx:id="armyName2Label" text="No army selected" textFill="WHITE" underline="true">
                      <font>
                         <Font name="Dubai Medium" size="32.0" />
                      </font>
@@ -75,7 +75,7 @@
       </HBox>
    </center>
    <top>
-      <Label styleClass="text" stylesheets="@../styles/styles.css" text="Army selection" BorderPane.alignment="CENTER">
+      <Label styleClass="text" stylesheets="@../styles/styles.css" text="Army selection" textFill="WHITE" BorderPane.alignment="CENTER">
          <font>
             <Font name="Dubai Medium" size="30.0" />
          </font>
@@ -87,6 +87,7 @@
             <Insets bottom="20.0" />
          </BorderPane.margin>
          <children>
+            <Button mnemonicParsing="false" onAction="#createNewArmy" styleClass="buttons" stylesheets="@../styles/styles.css" text="Create new army" />
             <ComboBox fx:id="terrainComboBox" prefWidth="150.0" promptText="Select terrain" styleClass="buttons" stylesheets="@../styles/styles.css">
                <items>
                   <FXCollections fx:factory="observableArrayList">

@@ -3,6 +3,7 @@ package edu.ntnu.idatt2001.edvarso.controller;
 import edu.ntnu.idatt2001.edvarso.Application;
 import edu.ntnu.idatt2001.edvarso.model.army.Army;
 import edu.ntnu.idatt2001.edvarso.model.battle.Battle;
+import edu.ntnu.idatt2001.edvarso.model.factory.DialogFactory;
 import edu.ntnu.idatt2001.edvarso.model.fileHandler.FileHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -118,6 +119,8 @@ public class BattleSimulationController {
 
         simulationBtn.setDisable(true);
         resetArmiesBtn.setDisable(false);
+
+        DialogFactory.showDialog(winner.getName() + " won the battle!");
     }
 
 

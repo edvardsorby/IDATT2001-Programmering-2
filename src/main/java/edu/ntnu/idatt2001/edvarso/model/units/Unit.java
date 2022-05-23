@@ -22,7 +22,7 @@ public abstract class Unit {
      * @param armor a defense value that protects during an attack
      */
     public Unit(String name, int health, int attack, int armor) throws IllegalArgumentException {
-        if (name.isEmpty()) throw new IllegalArgumentException("The unit must have a name.");
+        if (name.isBlank()) throw new IllegalArgumentException("The unit must have a name.");
         if (health <= 0) throw new IllegalArgumentException("The health value must be larger than 0.");
         if (attack <= 0) throw new IllegalArgumentException("The attack value must be larger than 0.");
         if (armor < 0) throw new IllegalArgumentException("The armor value can't be negative.");
