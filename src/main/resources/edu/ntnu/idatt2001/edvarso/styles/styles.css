@@ -14,4 +14,10 @@
     -fx-background-color: #555555;
     -fx-text-fill: #FFFFFF;
 }
+.table-row-cell{
+    -fx-background-color: #FFFFFF;
+}
+.table-view .column-header{
+    -fx-background-color: #EEEEEE;
+}
 
