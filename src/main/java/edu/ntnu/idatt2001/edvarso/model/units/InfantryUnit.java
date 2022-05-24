@@ -1,5 +1,7 @@
 package edu.ntnu.idatt2001.edvarso.model.units;
 
+import edu.ntnu.idatt2001.edvarso.model.battle.Terrain;
+
 /**
  * The specialized unit class InfantryUnit, which inherits from the superclass Unit.
  */
@@ -31,8 +33,8 @@ public class InfantryUnit extends Unit{
      * @return returns an attack bonus, which is higher if the terrain is "FOREST"
      */
     @Override
-    public int getAttackBonus(String terrain) {
-        if (terrain.equals("FOREST")) {
+    public int getAttackBonus(Terrain terrain) {
+        if (terrain.equals(Terrain.FOREST)) {
             return 4;
         } else {
             return 2;
@@ -45,8 +47,8 @@ public class InfantryUnit extends Unit{
      * @return returns a resist bonus, which is higher if the terrain is "FOREST"
      */
     @Override
-    public int getResistBonus(String terrain) {
-        if (terrain.equals("FOREST")) {
+    public int getResistBonus(Terrain terrain) {
+        if (terrain.equals(Terrain.FOREST)) {
             return 2;
         } else {
             return 1;

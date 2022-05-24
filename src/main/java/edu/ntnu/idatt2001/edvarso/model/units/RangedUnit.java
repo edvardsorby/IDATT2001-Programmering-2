@@ -1,5 +1,7 @@
 package edu.ntnu.idatt2001.edvarso.model.units;
 
+import edu.ntnu.idatt2001.edvarso.model.battle.Terrain;
+
 /**
  * The specialized unit class RangedUnit, which inherits from the superclass Unit.
  */
@@ -33,10 +35,10 @@ public class RangedUnit extends Unit{
      * and lower if the terrain is "FOREST"
      */
     @Override
-    public int getAttackBonus(String terrain) {
-        if (terrain.equals("HILL")) {
+    public int getAttackBonus(Terrain terrain) {
+        if (terrain.equals(Terrain.HILL)) {
             return 6;
-        } else if (terrain.equals("FOREST")) {
+        } else if (terrain.equals(Terrain.FOREST)) {
             return 1;
         } else {
             return 3;
@@ -49,7 +51,7 @@ public class RangedUnit extends Unit{
      * @return the calculated resist bonus, based on the number of times defended an attack so far
      */
     @Override
-    public int getResistBonus(String terrain) {
+    public int getResistBonus(Terrain terrain) {
         int resistBonus = 2;
 
         if (getTimesDefended() == 0) {

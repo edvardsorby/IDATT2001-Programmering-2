@@ -2,6 +2,7 @@ package edu.ntnu.idatt2001.edvarso;
 
 import edu.ntnu.idatt2001.edvarso.model.army.Army;
 import edu.ntnu.idatt2001.edvarso.model.battle.Battle;
+import edu.ntnu.idatt2001.edvarso.model.battle.Terrain;
 import edu.ntnu.idatt2001.edvarso.model.units.CavalryUnit;
 import edu.ntnu.idatt2001.edvarso.model.units.CommanderUnit;
 import edu.ntnu.idatt2001.edvarso.model.units.InfantryUnit;
@@ -26,7 +27,7 @@ public class BattleTest {
         for (int i = 0; i < 200; i++) orcishHorde.add(new RangedUnit("Spearman", 100));
         orcishHorde.add(new CommanderUnit("Gul'dan", 180));
 
-        Battle battle = new Battle(humanArmy, orcishHorde, "HILL");
+        Battle battle = new Battle(humanArmy, orcishHorde, Terrain.HILL);
 
         System.out.println(battle.simulate().getName() + " won the battle.");
     }
@@ -50,7 +51,7 @@ public class BattleTest {
             for (int i = 0; i < 200; i++) orcishHorde.add(new RangedUnit("Spearman", 100));
             orcishHorde.add(new CommanderUnit("Gul'dan", 180));
 
-            Battle battle = new Battle(humanArmy, orcishHorde, "HILL");
+            Battle battle = new Battle(humanArmy, orcishHorde, Terrain.HILL);
 
             if (battle.simulate().equals(humanArmy)) {
                 humanWins++;

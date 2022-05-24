@@ -89,13 +89,6 @@
          <children>
             <Button mnemonicParsing="false" onAction="#createNewArmy" styleClass="buttons" stylesheets="@../styles/styles.css" text="Create new army" />
             <ComboBox fx:id="terrainComboBox" prefWidth="150.0" promptText="Select terrain" styleClass="buttons" stylesheets="@../styles/styles.css">
-               <items>
-                  <FXCollections fx:factory="observableArrayList">
-                     <String fx:value="HILL" />
-                     <String fx:value="PLAINS" />
-                     <String fx:value="FOREST" />
-                  </FXCollections>
-               </items>
             </ComboBox>
             <Button mnemonicParsing="false" onAction="#goToSimulation" styleClass="buttons" stylesheets="@../styles/styles.css" text="Go to battle simulation" />
          </children>

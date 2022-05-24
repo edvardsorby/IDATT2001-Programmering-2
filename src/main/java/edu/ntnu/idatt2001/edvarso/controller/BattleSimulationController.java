@@ -3,6 +3,7 @@ package edu.ntnu.idatt2001.edvarso.controller;
 import edu.ntnu.idatt2001.edvarso.Application;
 import edu.ntnu.idatt2001.edvarso.model.army.Army;
 import edu.ntnu.idatt2001.edvarso.model.battle.Battle;
+import edu.ntnu.idatt2001.edvarso.model.battle.Terrain;
 import edu.ntnu.idatt2001.edvarso.model.factory.DialogFactory;
 import edu.ntnu.idatt2001.edvarso.model.fileHandler.FileHandler;
 import javafx.collections.FXCollections;
@@ -101,7 +102,7 @@ public class BattleSimulationController {
     private Army army1;
     private Army army2;
 
-    private String terrain;
+    private Terrain terrain;
 
 
     @FXML
@@ -142,7 +143,7 @@ public class BattleSimulationController {
      * @param army2File the army2 file
      * @param terrain the terrain where the battle takes place
      */
-    public void receiveArmyFiles(File army1File, File army2File, String terrain) {
+    public void receiveArmyFiles(File army1File, File army2File, Terrain terrain) {
         this.army1File = army1File;
         this.army2File = army2File;
         this.terrain = terrain;
@@ -151,7 +152,7 @@ public class BattleSimulationController {
         army2 = FileHandler.readFromFile(army2File.getPath());
 
         displayArmyData();
-        terrainText.setText("Terrain: " + terrain.toLowerCase());
+        terrainText.setText("Terrain: " + terrain.toString().toLowerCase());
     }
 
     /**

@@ -1,5 +1,7 @@
 package edu.ntnu.idatt2001.edvarso.model.units;
 
+import edu.ntnu.idatt2001.edvarso.model.battle.Terrain;
+
 import java.util.Objects;
 
 /**
@@ -40,7 +42,7 @@ public abstract class Unit {
      * @param opponent the opponent to attack
      * @param terrain the terrain where the attack happens
      */
-    public void attack (Unit opponent, String terrain) {
+    public void attack (Unit opponent, Terrain terrain) {
         int newHealth = opponent.getHealth() - (attack + getAttackBonus(terrain)) + (opponent.getArmor() + opponent.getResistBonus(terrain));
 
         if (newHealth < 0) {
@@ -100,14 +102,14 @@ public abstract class Unit {
      * @param terrain the terrain where the unit is attacking
      * @return the attack bonus of the unit
      */
-    public abstract int getAttackBonus(String terrain);
+    public abstract int getAttackBonus(Terrain terrain);
 
     /**
      * Gets the unit's resist bonus.
      * @param terrain the terrain where the unit is defending
      * @return the resist bonus of the unit
      */
-    public abstract int getResistBonus(String terrain);
+    public abstract int getResistBonus(Terrain terrain);
 
     /**
      * Gets the number of times the unit has attacked another unit.

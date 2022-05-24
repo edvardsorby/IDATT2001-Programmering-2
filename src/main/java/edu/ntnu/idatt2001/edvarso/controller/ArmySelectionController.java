@@ -2,12 +2,14 @@ package edu.ntnu.idatt2001.edvarso.controller;
 
 import edu.ntnu.idatt2001.edvarso.Application;
 import edu.ntnu.idatt2001.edvarso.model.army.Army;
+import edu.ntnu.idatt2001.edvarso.model.battle.Terrain;
 import edu.ntnu.idatt2001.edvarso.model.factory.DialogFactory;
 import edu.ntnu.idatt2001.edvarso.model.fileHandler.FileHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -18,8 +20,10 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class ArmySelectionController {
+public class ArmySelectionController implements Initializable {
 
 
     @FXML
@@ -97,6 +101,15 @@ public class ArmySelectionController {
     private Army army2;
 
     /**
+     * Initializes the controller
+     * Fills the combobox with the correct terrain types
+     */
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        terrainComboBox.setItems(FXCollections.observableArrayList(Terrain.values()));
+    }
+
+    /**
      * Selects army 1
      */
     @FXML
@@ -136,7 +149,10 @@ public class ArmySelectionController {
             Parent root = loader.load();
 
             BattleSimulationController controller = loader.getController();
-            controller.receiveArmyFiles(army1File, army2File, (String) terrainComboBox.getValue());
+
+
+
+            controller.receiveArmyFiles(army1File, army2File, (Terrain) terrainComboBox.getValue());
 
             Stage stage = Application.stage;
             stage.getScene().setRoot(root);

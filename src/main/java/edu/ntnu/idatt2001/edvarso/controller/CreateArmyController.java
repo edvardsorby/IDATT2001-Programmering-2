@@ -115,6 +115,7 @@ public class CreateArmyController implements Initializable {
             int commanderNumber = commanderNr.getValue();
 
 
+
             if (infantryNumber > 0) {
                 units.addAll(UnitFactory.getUnits("infantryUnit", infantryNameText.getText(),
                         Integer.parseInt(infantryHealthText.getText()), infantryNumber));

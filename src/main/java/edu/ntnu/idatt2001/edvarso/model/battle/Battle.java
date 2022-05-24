@@ -11,7 +11,7 @@ import java.util.Random;
 public class Battle {
     private final Army armyOne;
     private final Army armyTwo;
-    private final String terrain;
+    private final Terrain terrain;
 
     /**
      * The constructor for the model.battle.Battle class.
@@ -20,15 +20,15 @@ public class Battle {
      * @param terrain the terrain where the battle takes place.
      *                Must be either "HILL", "PLAINS" or "FOREST".
      */
-    public Battle(Army armyOne, Army armyTwo, String terrain) {
-        if (!(terrain.equalsIgnoreCase("HILL") ||
-                terrain.equalsIgnoreCase("PLAINS") ||
-                terrain.equalsIgnoreCase("FOREST"))) {
+    public Battle(Army armyOne, Army armyTwo, Terrain terrain) {
+        if (!(terrain.equals(Terrain.HILL) ||
+                terrain.equals(Terrain.PLAINS) ||
+                terrain.equals(Terrain.FOREST))) {
             throw new IllegalArgumentException("The terrain must be either \"HILL\", \"PLAINS\" or \"FOREST\"");
         }
         this.armyOne = armyOne;
         this.armyTwo = armyTwo;
-        this.terrain = terrain.toUpperCase();
+        this.terrain = terrain;
     }
 
     /**
