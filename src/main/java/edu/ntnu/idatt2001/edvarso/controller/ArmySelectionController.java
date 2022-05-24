@@ -117,9 +117,13 @@ public class ArmySelectionController implements Initializable {
         File file = selectArmyFile();
 
         if (file != null) {
-            army1File = file;
-            army1 = FileHandler.readFromFile(army1File.getPath());
-            displayArmyData();
+            try {
+                army1File = file;
+                army1 = FileHandler.readFromFile(army1File.getPath());
+                displayArmyData();
+            } catch (Exception e) {
+                DialogFactory.showDialog(e.getMessage());
+            }
         }
 
     }
@@ -132,9 +136,13 @@ public class ArmySelectionController implements Initializable {
         File file = selectArmyFile();
 
         if (file != null) {
-            army2File = file;
-            army2 = FileHandler.readFromFile(army2File.getPath());
-            displayArmyData();
+            try {
+                army2File = file;
+                army2 = FileHandler.readFromFile(army2File.getPath());
+                displayArmyData();
+            } catch (Exception e) {
+                DialogFactory.showDialog(e.getMessage());
+            }
         }
 
     }
