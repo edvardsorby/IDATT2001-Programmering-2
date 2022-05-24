@@ -11,7 +11,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class BattleTest {
-    //TODO: Use @BeforeEach to fill in test data before each test.
     @Test
     @DisplayName("Simulate a battle")
     public void simulate() {
