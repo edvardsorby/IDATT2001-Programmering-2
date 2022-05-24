@@ -42,9 +42,9 @@ public class Battle {
             Unit attacker;
             Unit defender;
 
-            int i = rand.nextInt(armyOne.getAllUnits().size() + armyTwo.getAllUnits().size());
+            int i = rand.nextInt(2);
 
-            if (i < armyOne.getAllUnits().size()) {
+            if (i == 0) {
                 attacker = armyOne.getRandom();
                 defender = armyTwo.getRandom();
             } else {
