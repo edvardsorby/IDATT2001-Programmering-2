@@ -6,6 +6,9 @@ import edu.ntnu.idatt2001.edvarso.model.factory.DialogFactory;
 import edu.ntnu.idatt2001.edvarso.model.factory.UnitFactory;
 import edu.ntnu.idatt2001.edvarso.model.fileHandler.FileHandler;
 import edu.ntnu.idatt2001.edvarso.model.units.Unit;
+import javafx.beans.property.StringProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -64,14 +67,13 @@ public class CreateArmyController implements Initializable {
     @FXML
     private Spinner<Integer> rangedNr;
 
-    private File army1File;
-    private File army2File;
-    private Army army1;
-    private Army army2;
 
 
     /**
      * Initializes the page
+     * Creates IntegerSpinnerValueFactories for the spinners that decide the number of each unit.
+     * To avoid other characters than numbers in the spinners, a solution has been derived from
+     * <a href="https://stackoverflow.com/questions/36549829/javafx-spinner-empty-text-nullpointerexception">StackOverflow</a>
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -85,20 +87,31 @@ public class CreateArmyController implements Initializable {
         cavalryNr.setValueFactory(cavalryValueFactory);
         commanderNr.setValueFactory(commanderValueFactory);
 
+        ChangeListener<String> changeListener= new ChangeListener<>() {
+            private static boolean isInteger(String string) {
+                try {
+                    Integer.parseInt(string);
+                    return true;
+                } catch (NumberFormatException e) {
+                    return false;
+                }
+            }
+
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+                if (!isInteger(t1) && !t1.equals("")) {
+                    StringProperty string = (StringProperty) observableValue;
+                    string.set(s);
+                }
+            }
+        };
+
+        infantryNr.editorProperty().getValue().textProperty().addListener(changeListener);
+        rangedNr.editorProperty().getValue().textProperty().addListener(changeListener);
+        cavalryNr.editorProperty().getValue().textProperty().addListener(changeListener);
+        commanderNr.editorProperty().getValue().textProperty().addListener(changeListener);
     }
 
-    /**
-     * Navigates back to the army selection menu
-     */
-    @FXML
-    public void back() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/ntnu/idatt2001/edvarso/view/armySelection.fxml"));
-        Parent root = loader.load();
-
-        Stage stage = Application.stage;
-        stage.getScene().setRoot(root);
-
-    }
 
     /**
      * Saves to a new army file
@@ -156,13 +169,22 @@ public class CreateArmyController implements Initializable {
                 back();
             }
 
-
-
-
         } catch (NumberFormatException e) {
             DialogFactory.showDialog("Make sure all numbers are valid");
         } catch (Exception e) {
             DialogFactory.showDialog(e.getMessage());
         }
+    }
+
+    /**
+     * Navigates back to the army selection menu
+     */
+    @FXML
+    public void back() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/ntnu/idatt2001/edvarso/view/armySelection.fxml"));
+        Parent root = loader.load();
+
+        Stage stage = Application.stage;
+        stage.getScene().setRoot(root);
     }
 }
