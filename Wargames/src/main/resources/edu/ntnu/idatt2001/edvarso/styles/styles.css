@@ -1,0 +1,23 @@
+.background{
+    -fx-background-color: #333333;
+    -fx-background-image: url("background.jpg");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+}
+
+.buttons{
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #000000;
+}
+.buttons:hover{
+    -fx-cursor:HAND;
+    -fx-background-color: #555555;
+    -fx-text-fill: #FFFFFF;
+}
+.table-row-cell{
+    -fx-background-color: #FFFFFF;
+}
+.table-view .column-header{
+    -fx-background-color: #EEEEEE;
+}
+
